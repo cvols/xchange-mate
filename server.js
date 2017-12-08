@@ -5,7 +5,7 @@ var bodyParser = require('body-parser')
 
 // setting up the express app
 var app = express()
-var port = process.env.port || 3000
+var port = process.env.PORT || 3000
 
 // requiring models folder for syncing
 var db = require('./models')
