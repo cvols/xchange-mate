@@ -1,0 +1,61 @@
+<div class="row">
+    <div class="col s12">
+        <h1>
+            Chris Volonnino
+        </h1>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col s12">
+            <table class="highlight">
+                {{#each customers}} {{transactions}}
+                <thead>
+                    <tr>
+                        <th>First Name</th>
+                        <th>Location</th>
+                        <th>Rating</th>
+                        <th class="right-align">Cash Amount</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr class="test">
+                        <td>{{first_name}}</td>
+                        <td>{{transactions.transaction_location}}</td>
+                        <td>{{user_rating}}</td>
+                        <td>{{transactions.total_money}}</td>
+                    </tr>
+                </tbody>
+                {{/each}}
+            </table>
+
+            <ul class="collapsible popout" data-collapsible="accordion">
+                {{#each customers}}
+                <li>
+                    <div class="collapsible-header">
+                        <i class="material-icons">filter_drama</i>Name</div>
+                    <div class="collapsible-body">
+                        <span>{{first_name}}</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="collapsible-header">
+                        <i class="material-icons">place</i>Second</div>
+                    <div class="collapsible-body">
+                        <span>Lorem ipsum dolor sit amet.</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="collapsible-header">
+                        <i class="material-icons">whatshot</i>User Rating</div>
+                    <div class="collapsible-body">
+                        <span>{{user_rating}}</span>
+                    </div>
+                </li>
+                {{/each}}
+            </ul>
+        </div>
+    </div>
+</div>

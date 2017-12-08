@@ -2,45 +2,31 @@ module.exports = function (sequelize, DataTypes) {
     var Transaction = sequelize.define("Transaction", {
         desired_currency: {
             type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                len: [1]
-            }
+            allowNull: false
         },
         total_money: {
             type: DataTypes.INTEGER,
-            allowNull: false,
-            validate: {
-                len: [1]
-            }
+            allowNull: false
         },
         current_currency: {
             type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                len: [1]
-            }
+            allowNull: false
+        },
+        transaction_location: {
+            type: DataTypes.STRING,
+            allowNull: false
         },
         exchange_rate: {
             type: DataTypes.INTEGER,
-            allowNull: false,
-            validate: {
-                len: [1]
-            }
+            allowNull: false
         },
         fees: {
             type: DataTypes.INTEGER,
-            allowNull: false,
-            validate: {
-                len: [1]
-            }
+            allowNull: false
         },
         total_charges: {
             type: DataTypes.INTEGER,
-            allowNull: false,
-            validate: {
-                len: [1]
-            }
+            allowNull: false
         },
         transaction: {
             type: DataTypes.BOOLEAN,
