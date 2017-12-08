@@ -1,3 +1,4 @@
+
 module.exports = function (sequelize, DataTypes) {
     var Customer = sequelize.define("Customer", {
         first_name: {
@@ -36,10 +37,10 @@ module.exports = function (sequelize, DataTypes) {
             }
         },
         phone_number: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING,
             allowNull: false,
             validate: {
-                len: [10]
+                len: [1 - 100]
             }
         },
         street_address: {
