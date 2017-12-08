@@ -1,82 +1,92 @@
-module.exports = function(sequelize, DataTypes) {
-    var Dumper = sequelize.define("Dumper",{
-        first_name:{
+module.exports = function (sequelize, DataTypes) {
+    var Customer = sequelize.define("Customer", {
+        first_name: {
             type: DataTypes.STRING,
             allowNull: false,
-            validate:{
+            validate: {
                 len: [1]
             }
         },
-        last_name:{
+        last_name: {
             type: DataTypes.STRING,
             allowNull: false,
-            validate:{
+            validate: {
                 len: [1]
             }
         },
-        username:{
+        username: {
             type: DataTypes.STRING,
             allowNull: false,
-            validate:{
+            validate: {
                 len: [1]
             }
         },
-        first_name:{
+        password: {
             type: DataTypes.STRING,
             allowNull: false,
-            validate:{
+            validate: {
                 len: [1]
             }
         },
-        password:{
+        email: {
             type: DataTypes.STRING,
             allowNull: false,
-            validate:{
+            validate: {
                 len: [1]
             }
         },
-        email:{
+        phone_number: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            validate: {
+                len: [10]
+            }
+        },
+        street_address: {
             type: DataTypes.STRING,
             allowNull: false,
-            validate:{
+            validate: {
                 len: [1]
             }
         },
-        address:{
+        city: {
             type: DataTypes.STRING,
             allowNull: false,
-            validate:{
+            validate: {
+                len: [1]
+            }
+        }, 
+        state: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+                len: [1]
+            }
+        }, 
+        zip_code: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            validate: {
                 len: [1]
             }
         },
-        bckgrndChk_Status:{
+        user_rating: {
+            type: DataTypes.STRING,
+            validate: {
+                len: [1]
+            }
+        },
+        transaction: {
             type: DataTypes.BOOLEAN,
-            allowNull: false,
-            validate:{
-                len: [1]
-            }
-        },
-        user_rating:{
-            type: DataTypes.STRING,
-            allowNull: false,
-            validate:{
-                len: [1]
-            }
-        },
-        date_joined:{
-            type: DataTypes.TIMESTAMP,
-            allowNull: false,
-            validate:{
-                len: [1]
-            }
+            allowNull: false
         }
-    });    
-        return Dumper;    
-    };
-    
-    
-    
-    
-    
-    
-      
+    })
+
+    return Customer
+}
+
+
+
+
+
+
