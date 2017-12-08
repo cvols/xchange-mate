@@ -13,6 +13,8 @@ var db = require('./models')
 // static directory
 app.use(express.static('public'))
 
+
+//test comment
 // setting up express app to handle data parsing
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
