@@ -1,7 +1,7 @@
 {
   "development": {
-    "username": "chris", // change username
-    "password": "password", // change passsword
+    "username": "chris", 
+    "password": "password", 
     "database": "xchange_mate", 
     "host": "127.0.0.1",
     "dialect": "mysql"
