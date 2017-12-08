@@ -1,7 +1,7 @@
 // dependencies
 var Sequelize = require('sequelize')
 
-// creating mysql connection using Sequelize
+// creating mysql database using Sequelize
 var sequelize = new Sequelize('xchange_mate', 'chris', 'password', { 
     host: 'localhost',
     dialect: 'mysql',
@@ -11,6 +11,9 @@ var sequelize = new Sequelize('xchange_mate', 'chris', 'password', {
         idle: 1000
     }
 })
+
+// creating connection variable
+var connection
 
 // heroku connection
 if (process.env.JAWSDB_URL) {
@@ -24,4 +27,4 @@ if (process.env.JAWSDB_URL) {
     })
 }
 
-module.exports = seqeulize
+module.exports = sequelize

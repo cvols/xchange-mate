@@ -5,7 +5,7 @@ var bodyParser = require('body-parser')
 
 // setting up the express app
 var app = express()
-var port = process.env.PORT || 3000
+var port = process.env.PORT || 3030
 
 // requiring models folder for syncing
 var db = require('./models')
@@ -28,7 +28,7 @@ app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
 
 // routes
-var routes = require('./controllers/burger_controller.js') 
+var routes = require('./controllers/xchange_controller.js') 
 app.use('/', routes)
 
 //syncing our sequelize models and then starting the express app
