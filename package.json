@@ -21,7 +21,9 @@
     "express": "^4.16.2",
     "express-handlebars": "^3.0.0",
     "method-override": "^2.3.10",
-    "mysql": "^2.15.0"
+    "mysql": "^2.15.0",
+    "nodemon": "^1.12.5",
+    "sequelize": "^4.27.0"
   },
   "devDependencies": {
     "nightmare": "^2.10.0"
