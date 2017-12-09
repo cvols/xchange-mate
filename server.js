@@ -1,7 +1,12 @@
 // dependencies
 var express = require('express')
 var methodOverride = require('method-override')
+var passport = require('passport')
+var session = require('express-session')
 var bodyParser = require('body-parser')
+var env = require('dotenv').load()
+
+
 
 // setting up the express app
 var app = express()
@@ -18,6 +23,10 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.text())
 app.use(bodyParser.json({ type: 'application/vnd.api+json' }))
+app.use(session({ secret: 'keyboard dog', resave: true, saveUninitialized: true}));
+app.use(passport.initialize());
+app.use(passport.session()); // persistent login sessions
+
 
 // setting up methodOverride
 app.use(methodOverride('_method'))
@@ -31,7 +40,14 @@ app.set('view engine', 'handlebars')
 var routes = require('./controllers/xchange_controller.js') 
 app.use('/', routes)
 
-//syncing our sequelize models and then starting the express app
+app.get('/', function(req,res){
+    res.send()
+})
+
+// var authRoute = require('./routes/auth.js')(app)
+// require('./config/passport/passport.js')(passport, db.customer);
+
+//syncing our sequelize model s and then starting the express app
 db.sequelize.sync({}).then(function() {
     app.listen(port, function() {
         console.log('app listening on port: ' + port)

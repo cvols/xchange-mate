@@ -1,6 +1,9 @@
 
 module.exports = function (sequelize, DataTypes) {
-    var Customer = sequelize.define("Customer", {
+    var Customer = sequelize.define("Customers", {
+        id: { 
+            autoIncrement: true, primaryKey: true, type: DataTypes.INTEGER
+        },        
         first_name: {
             type: DataTypes.STRING,
             allowNull: false,

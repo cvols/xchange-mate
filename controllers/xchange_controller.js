@@ -11,7 +11,7 @@ router.get('/', function(req, res) {
 })
 
 router.get('/index', function(req, res) {
-    db.Customer.findAll({}).then(function(data){
+    db.customer.findAll({}).then(function(data){
         var hbsObject = {
             customers: data
         }
