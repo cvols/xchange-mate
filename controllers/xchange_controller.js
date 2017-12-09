@@ -19,4 +19,16 @@ router.get('/vendor', function(req, res) {
     })
 })
 
+router.get('/vendor/:id', function(req, res) {
+    var id = req.params.id
+
+    db.Customer.findOne({
+        where: {
+            id: id
+        }
+    }).then(function(dbCustomer) {
+        res.json(dbCustomer)
+    })
+})
+
 module.exports = router
