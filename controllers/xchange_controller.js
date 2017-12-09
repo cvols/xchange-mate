@@ -10,6 +10,12 @@ router.get('/', function(req, res) {
     res.redirect('/index')
 })
 
+router.get('/index', function(req, res){
+    res.render('/index')
+})
+
+
+
 router.get('/vendor', function(req, res) {
     db.Customer.findAll({}).then(function(data){
         var hbsObject = {
