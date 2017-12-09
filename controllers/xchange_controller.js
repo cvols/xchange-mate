@@ -2,7 +2,7 @@
 var express = require('express')
 var router = express.Router()
 
-// import data models
+// import models
 var db = require('../models')
 
 // redirect to landing page
@@ -10,12 +10,12 @@ router.get('/', function(req, res) {
     res.redirect('/index')
 })
 
-router.get('/index', function(req, res) {
+router.get('/vendor', function(req, res) {
     db.Customer.findAll({}).then(function(data){
         var hbsObject = {
             customers: data
         }
-    res.render('./index', hbsObject)
+    res.render('./vendor', hbsObject)
     })
 })
 
