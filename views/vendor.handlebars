@@ -1,4 +1,3 @@
-
 <div class="row">
     <div class="col s12">
         <h1>
@@ -11,7 +10,6 @@
     <div class="row">
         <div class="col s12">
             <table class="highlight">
-                {{#each customers}} {{transactions}}
                 <thead>
                     <tr>
                         <th>First Name</th>
@@ -20,7 +18,7 @@
                         <th class="right-align">Cash Amount</th>
                     </tr>
                 </thead>
-
+                {{#each customers}} {{transactions}}
                 <tbody>
                     <tr class="test">
                         <td>{{first_name}}</td>
@@ -33,12 +31,12 @@
             </table>
 
             <ul class="collapsible popout" data-collapsible="accordion">
-                {{#each customers}}
+                {{customers}}
                 <li>
                     <div class="collapsible-header">
-                        <i class="material-icons">filter_drama</i>Name</div>
+                        <i class="material-icons">person</i>Name</div>
                     <div class="collapsible-body">
-                        <span>{{first_name}}</span>
+                        <span>{{this.first_name}}</span>
                     </div>
                 </li>
                 <li>
@@ -52,57 +50,11 @@
                     <div class="collapsible-header">
                         <i class="material-icons">whatshot</i>User Rating</div>
                     <div class="collapsible-body">
-                        <span>{{user_rating}}</span>
+                        <span>{{this.user_rating}}</span>
                     </div>
                 </li>
-                {{/each}}
+                {{/}}
             </ul>
         </div>
     </div>
 </div>
-
-{{!-- Aaron's customer page --}}
-
-<br/>
-<br/>
- <h1>Customer Page</h1>
- <br/>
-
-    {{!-- <form>
-        {{!-- desired currency --}}
-        <select name="currency">
-            <option value="USD">USD</option>
-            <option value="EUR">USD</option>
-        </select>
-        {{!--how much --}}
-        <select name="amount">
-
-        </select>    
-        {{!--current currency --}}
-        <select name="current currency">
-        
-        <select>
-        {{!-- transaction location --}}
-        <select name="location">
-        
-        <select>
-   
-        <input type="button" value="fixer api" id="apiCall">
-        
-    </form> --}}
-
-    <div class="input-field col s12">
-    <select>
-      <option value="" disabled selected>Choose your option</option>
-      <option value="1">Option 1</option>
-      <option value="2">Option 2</option>
-      <option value="3">Option 3</option>
-    </select>
-    <label>Materialize Select</label>
-  </div>
-
-
-
-
-        
-
