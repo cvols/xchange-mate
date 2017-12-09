@@ -3,11 +3,15 @@ var express = require('express')
 var router = express.Router()
 
 // import models
-var db = require('../models')
+var db = require('../models/reciever.js')
 
 // redirect to landing page
 router.get('/', function(req, res) {
     res.redirect('/index')
+})
+
+router.get('/index', function(req, res) {
+    res.render('./index');
 })
 
 router.get('/vendor', function(req, res) {
