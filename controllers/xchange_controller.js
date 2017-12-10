@@ -19,10 +19,31 @@ router.get('/vendor', function(req, res) {
     })
 })
 
+router.get('/reciever', function(req, res) {
+    db.Customer.findAll({}).then(function(data){
+        var hbsObject = {
+            customers: data
+        }
+    res.render('./reciever', hbsObject)
+    })
+})
+
 router.get('/vendor/:id', function(req, res) {
     var id = req.params.id
 
     db.Customer.findOne({
+        where: {
+            id: id
+        }
+    }).then(function(dbCustomer) {
+        res.json(dbCustomer)
+    })
+})
+
+router.get('/receiver/:id', function(req, res) {
+    var id = req.params.id
+
+    db.receiver.findOne({
         where: {
             id: id
         }
