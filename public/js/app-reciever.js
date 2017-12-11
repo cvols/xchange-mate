@@ -35,17 +35,13 @@ $("#submit").click(function () {
         var obj = response.rates
         console.log(response.rates);
         for (x in obj) {
-         // if (obj.hasOwnProperty(desiredCurrency)) {
+    
             var val = obj[x];
+            var fee =  "fee" + " " + val * desiredAmount + " " + currentCurrency
             console.log(val);
+            console.log(fee);
             console.log( "fee" + " " + val * desiredAmount + " " + currentCurrency);
-            // if(obj==desiredCurrency){
-            //     console.log("hello");
-            // }else{
-            //     console.log("this does not work");
-            // }
             
-          //}
         }
       
         // console.log(response.rates["USD"]);
