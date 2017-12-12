@@ -37,7 +37,7 @@ router.post('/reciever', function (req, res) {
     db.Transaction.update(req.body,
         {
           where: {
-            id: 12
+            id: 1
           }
         })
       .then(function(dbTransaction) {

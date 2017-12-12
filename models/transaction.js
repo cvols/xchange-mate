@@ -21,7 +21,7 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: false
         },
         fees: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.DECIMAL(10,2),
             allowNull: false
         },
         total_charges: {

@@ -36,7 +36,7 @@ $("#submit").click(function () {
         for (x in obj) {
 
             var exchangeRate = obj[x];
-            var fee = exchangeRate * desiredAmount + " " + currentCurrency
+            var fee = exchangeRate * desiredAmount 
             console.log("exchange rate = " + exchangeRate);
             console.log("total charge " + fee);
         }
