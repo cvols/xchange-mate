@@ -15,8 +15,8 @@ $("#submit").click(function () {
     var transLocation = $("#transLocation").val().trim();
     var transDate = $("#transDate").val().trim();
     var queryUrl = "http://api.fixer.io/latest?base=" + desiredCurrency + "&symbols=" + currentCurrency
-     
-    var pain = JSON.stringify(desiredCurrency);
+
+
 
 
     console.log("desired currency" + " " + desiredCurrency);
@@ -30,17 +30,17 @@ $("#submit").click(function () {
         method: 'GET',
         dataType: 'json'
     }).done(function (response) {
-        
+
         var obj = response.rates
         console.log(response.rates);
         for (x in obj) {
-    
+
             var exchangeRate = obj[x];
-            var fee =  "fee" + " " + exchangeRate * desiredAmount + " " + currentCurrency
+            var fee = exchangeRate * desiredAmount + " " + currentCurrency
             console.log("exchange rate = " + exchangeRate);
             console.log("total charge " + fee);
         }
-      
+
         // console.log(response.rates["USD"]);
         //the fee = the amount of your current currency inside of a dolloar of your desired currency * your desired amount of desired currency
 
@@ -52,11 +52,16 @@ $("#submit").click(function () {
             method: 'POST',
             dataType: 'json',
             data: {
-                exchangeRate,
-                currentCurrency
+                fees: fee,
+                transaction_location: transLocation,
+                // transDate,
+                desired_currency: desiredCurrency,
+                total_money: desiredAmount,
+                exchange_rate: exchangeRate,
+                current_currency: currentCurrency
             }
         }).done(function (response) {
-               console.log("done");
+            console.log("done");
 
         });
     });

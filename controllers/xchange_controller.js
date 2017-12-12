@@ -1,9 +1,9 @@
 // dependencies
-var express = require('express')
-var router = express.Router()
+var express = require('express');
+var router = express.Router();
 
 // import models
-var db = require('../models')
+var db = require('../models');
 
 // redirect to landing page
 router.get('/', function (req, res) {
@@ -34,6 +34,19 @@ router.get('/reciever', function (req, res) {
 router.post('/reciever', function (req, res) {
     console.log(req.body);
     res.json("hi");
+    db.Transaction.update(req.body,
+        {
+          where: {
+            id: 12
+          }
+        })
+      .then(function(dbTransaction) {
+          console.log(dbTransaction);
+        // res.json(dbTransaction);
+      });
+
+   
+    //you are adding the id from the customer table to the transaction table so that you can associate them
     //db.Transaction: add method customer id = however you get customer id
     //sequelize code how to add information to database
     //depending on authentication will determine how I will get access to user id
@@ -45,7 +58,7 @@ router.post('/reciever', function (req, res) {
 router.get('/vendor/:id', function (req, res) {
     var id = req.params.id
 
-    db.Customer.findOne({
+   db.Customer.findOne({
         where: {
             id: id
         }
@@ -59,7 +72,7 @@ router.get('/receiver/:id', function (req, res) {
 
     db.receiver.findOne({
         where: {
-            id: id
+            id: 1
         }
     }).then(function (dbCustomer) {
         res.json(dbCustomer)
