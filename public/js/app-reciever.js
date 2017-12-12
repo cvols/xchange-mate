@@ -31,17 +31,14 @@ $("#submit").click(function () {
         dataType: 'json'
     }).done(function (response) {
         
-        console.log("USD" + response.rates.USD);
         var obj = response.rates
         console.log(response.rates);
         for (x in obj) {
     
-            var val = obj[x];
-            var fee =  "fee" + " " + val * desiredAmount + " " + currentCurrency
-            console.log(val);
-            console.log(fee);
-            console.log( "fee" + " " + val * desiredAmount + " " + currentCurrency);
-            
+            var exchangeRate = obj[x];
+            var fee =  "fee" + " " + exchangeRate * desiredAmount + " " + currentCurrency
+            console.log("exchange rate = " + exchangeRate);
+            console.log("total charge " + fee);
         }
       
         // console.log(response.rates["USD"]);
@@ -50,9 +47,18 @@ $("#submit").click(function () {
         //Problem - how do you get the amount of your current currency inside of dollar of desired currency in a dynamic way. Right now you have to explicitly write the desired currency in dot notation to retrieve the difference.
         // console.log("fee" + " " + response.rates.USD * desiredAmount + " " + currentCurrency);
 
+        $.ajax({
+            url: "/reciever",
+            method: 'POST',
+            dataType: 'json',
+            data: {
+                exchangeRate,
+                currentCurrency
+            }
+        }).done(function (response) {
+               console.log("done");
 
-
-
+        });
     });
 });
 

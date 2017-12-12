@@ -6,48 +6,62 @@ var router = express.Router()
 var db = require('../models')
 
 // redirect to landing page
-router.get('/', function(req, res) {
+router.get('/', function (req, res) {
     res.redirect('/index')
 })
 
-router.get('/vendor', function(req, res) {
-    db.Customer.findAll({}).then(function(data){
+router.get('/vendor', function (req, res) {
+    db.Customer.findAll({}).then(function (data) {
         var hbsObject = {
             customers: data
         }
-    res.render('./vendor', hbsObject)
+        res.render('./vendor', hbsObject)
     })
 })
 
-router.get('/reciever', function(req, res) {
-    db.Customer.findAll({}).then(function(data){
+router.get('/reciever', function (req, res) {
+    db.Customer.findAll({}).then(function (data) {
         var hbsObject = {
             customers: data
         }
-    res.render('./reciever', hbsObject)
+        //this renders data to the view
+        res.render('./reciever', hbsObject)
     })
 })
 
-router.get('/vendor/:id', function(req, res) {
+//figure out a way to update the transaction table
+//figure out how to associate that transaction with a specific customer
+router.post('/reciever', function (req, res) {
+    console.log(req.body);
+    res.json("hi");
+    //db.Transaction: add method customer id = however you get customer id
+    //sequelize code how to add information to database
+    //depending on authentication will determine how I will get access to user id
+    //if you are using passport req.user
+})
+
+
+
+router.get('/vendor/:id', function (req, res) {
     var id = req.params.id
 
     db.Customer.findOne({
         where: {
             id: id
         }
-    }).then(function(dbCustomer) {
+    }).then(function (dbCustomer) {
         res.json(dbCustomer)
     })
 })
 
-router.get('/receiver/:id', function(req, res) {
+router.get('/receiver/:id', function (req, res) {
     var id = req.params.id
 
     db.receiver.findOne({
         where: {
             id: id
         }
-    }).then(function(dbCustomer) {
+    }).then(function (dbCustomer) {
         res.json(dbCustomer)
     })
 })
