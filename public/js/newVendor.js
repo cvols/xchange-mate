@@ -18,13 +18,13 @@ $(document).ready(function () {
 
             phone_number: $("#phone_numberV").val().trim(),
 
-            stree_address: $("#addressV").val().trim(),
+            street_address: $("#addressV").val().trim(),
 
             city: $("#cityV").val().trim(),
 
             state: $("#stateV").val().trim(),
 
-            zipCode: $("#zip_codeV").val().trim()
+            zip_code: $("#zip_codeV").val().trim()
         }  
 
 

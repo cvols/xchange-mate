@@ -28,6 +28,7 @@ module.exports = function (sequelize, DataTypes) {
             }
         },
         password: {
+
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
@@ -61,14 +62,14 @@ module.exports = function (sequelize, DataTypes) {
             validate: {
                 len: [1]
             }
-        }, 
+        },
         state: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
                 len: [1]
             }
-        }, 
+        },
         zip_code: {
             type: DataTypes.INTEGER,
             allowNull: false,
@@ -88,8 +89,15 @@ module.exports = function (sequelize, DataTypes) {
         }
     })
 
+    Customer.associate = function (models) {
+        Customer.hasMany(models.Transaction, {
+            onDelete: "cascade"
+        })
+    }
+
     return Customer
 }
+
 
 
 
