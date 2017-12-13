@@ -10,6 +10,53 @@ router.get('/', function(req, res) {
     res.redirect('/index')
 })
 
+
+router.get('/index', function(req, res) {
+    res.render('./index');
+})
+
+router.post('/api/newCustomer', function (req, res) {
+    console.log("hello");
+    console.log(req.body.first_name);
+    db.Customer.create({
+        first_name: req.body.first_name,
+        last_name: req.body.last_name,
+        username: req.body.username,
+        password: req.body.password,
+        email: req.body.email,
+        phone_number: req.body.phone_number,
+        street_address: req.body.street_address,
+        city: req.body.city,
+        state: req.body.state,
+        zip_code: req.body.zip_code
+    }).then(function (xchange_mate) {
+        res.json(xchange_mate)
+    })
+})
+
+router.post('/api/newVendor', function (req, res) {
+    console.log("hello");
+    console.log(req.body.first_name);
+    db.Vendor.create({
+        first_name: req.body.first_name,
+        last_name: req.body.last_name,
+        username: req.body.username,
+        password: req.body.password,
+        email: req.body.email,
+        phone_number: req.body.phone_number,
+        street_address: req.body.street_address,
+        city: req.body.city,
+        state: req.body.state,
+        zip_code: req.body.zip_code
+    }).then(function (xchange_mate) {
+        res.json(xchange_mate)
+    })
+})
+
+
+
+
+
 // gets all customers from table and prints to screen
 router.get('/vendor', function(req, res) {
     db.Customer.findAll({

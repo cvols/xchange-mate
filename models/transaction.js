@@ -1,5 +1,10 @@
 module.exports = function (sequelize, DataTypes) {
     var Transaction = sequelize.define("Transaction", {
+        id: {
+            type: DataTypes.INTEGER,
+            primaryKey: true,
+            autoIncrement: true
+          },
         desired_currency: {
             type: DataTypes.STRING,
             allowNull: false
@@ -29,8 +34,7 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: false
         },
         transaction: {
-            type: DataTypes.BOOLEAN,
-            allowNull: false
+            type: DataTypes.BOOLEAN
         }
     })
 
