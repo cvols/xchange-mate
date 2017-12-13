@@ -1,5 +1,11 @@
+
 module.exports = function (sequelize, DataTypes) {
     var Vendor = sequelize.define("Vendor", {
+        id: {
+            type: Sequelize.INTEGER,
+            primaryKey: true,
+            autoIncrement: true
+          },
         first_name: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -39,7 +45,7 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
-                len: [10]
+                len: [1 - 100]
             }
         },
         street_address: {
@@ -78,7 +84,7 @@ module.exports = function (sequelize, DataTypes) {
         },
         transaction: {
             type: DataTypes.BOOLEAN,
-            allowNull: false
+            
         }
     })
 

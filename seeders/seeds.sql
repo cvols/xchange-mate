@@ -1,6 +1,6 @@
 -- customers seeds --
 insert into customers (first_name, last_name, username, password, email, phone_number, street_address, city, state, zip_code, user_rating, transaction, createdAt, updatedAt)
-values ('chris', 'volonnino', 'cvols', 'password', 'chris.volonnino@gmail.com', '9083478101', '1140 garden street', 'hoboken', 'nj', 07030, 5.0, false, current_timestamp, current_timestamp), ('donald', 'trump', 'dtrump', 'password', 'donald.trump@whitehouse.com', '1231231231', '1 white house road', 'washington', 'dc', 11111, .01, false, current_timestamp, current_timestamp);
+values ('chris', 'volonnino', 'cvols', 'password', 'chris.volonnino@gmail.com', '9083478101', '1140 garden street', 'hoboken', 'nj', 07030, '5.0', false,CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
 
 -- vendors seeds --
 insert into vendors (first_name, last_name, username, password, email, phone_number, street_address, city, state, zip_code, user_rating, transaction, createdAt, updatedAt)

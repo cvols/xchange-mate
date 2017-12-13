@@ -79,7 +79,7 @@ module.exports = function (sequelize, DataTypes) {
         },
         transaction: {
             type: DataTypes.BOOLEAN,
-            allowNull: false
+            
         }
     })
 
