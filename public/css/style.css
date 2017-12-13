@@ -1,3 +1,18 @@
 .collapsible {
     display: none;
 }
+
+#vendor-back-btn {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+}
+
+.custom-card-row{
+    margin-top: 100px;
+}
+
+.custom-icon {
+    margin-right: 20px;
+}
+
