@@ -31,4 +31,19 @@ router.get('/vendor/:id', function(req, res) {
     })
 })
 
+
+router.get('/admin/', function(req, res) {
+    db.Transaction.findAll({
+        include: [db.Customer]
+    })
+    .then(function(data) {
+        var hbsObject = {
+            transaction: data
+        }
+        res.render('./admin', hbsObject)
+        console.log(hbsObject);
+    });
+});
+
+
 module.exports = router
