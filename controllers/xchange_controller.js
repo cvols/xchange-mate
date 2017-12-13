@@ -34,12 +34,7 @@ router.get('/reciever', function (req, res) {
 router.post('/reciever', function (req, res) {
     console.log(req.body);
     res.json("hi");
-    db.Transaction.update(req.body,
-        {
-          where: {
-            id: 1
-          }
-        })
+    db.Transaction.create(req.body)
       .then(function(dbTransaction) {
           console.log(dbTransaction);
         // res.json(dbTransaction);

@@ -58,7 +58,9 @@ $("#submit").click(function () {
                 desired_currency: desiredCurrency,
                 total_money: desiredAmount,
                 exchange_rate: exchangeRate,
-                current_currency: currentCurrency
+                current_currency: currentCurrency,
+                total_charges: 10,
+                transaction: false
             }
         }).done(function (response) {
             console.log("done");
