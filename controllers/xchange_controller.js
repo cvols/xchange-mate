@@ -12,7 +12,9 @@ router.get('/', function(req, res) {
 
 // gets all customers from table and prints to screen
 router.get('/vendor', function(req, res) {
-    db.Customer.findAll({}).then(function(data){
+    db.Customer.findAll({
+        include: [db.Transaction]        
+    }).then(function(data){
         var hbsObject = {
             customers: data
         }
