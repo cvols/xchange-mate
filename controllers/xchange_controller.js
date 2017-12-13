@@ -37,7 +37,6 @@ router.post('/reciever', function (req, res) {
     db.Transaction.create(req.body)
       .then(function(dbTransaction) {
           console.log(dbTransaction);
-        // res.json(dbTransaction);
       });
 
    
