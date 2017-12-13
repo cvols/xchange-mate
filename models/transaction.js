@@ -34,7 +34,8 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: false
         },
         transaction: {
-            type: DataTypes.BOOLEAN
+            type: DataTypes.BOOLEAN,
+            defaultValue: false
         }
     })
 
