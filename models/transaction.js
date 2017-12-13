@@ -34,6 +34,14 @@ module.exports = function (sequelize, DataTypes) {
         }
     })
 
+    Transaction.associate = function(models) {
+        Transaction.belongsTo(models.Customer, {
+            foreignKey: {
+                allowNull: false
+            }
+        });
+    }
+
     return Transaction
 }
 
