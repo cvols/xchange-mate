@@ -6,17 +6,35 @@ var router = express.Router();
 var db = require('../models');
 
 // redirect to landing page
-router.get('/', function (req, res) {
+router.get('/', function(req, res) {
     res.redirect('/index')
 })
 
-router.get('/vendor', function (req, res) {
-    db.Customer.findAll({}).then(function (data) {
+// gets all customers from table and prints to screen
+router.get('/vendor', function(req, res) {
+    db.Customer.findAll({}).then(function(data){
         var hbsObject = {
             customers: data
         }
-        res.render('./vendor', hbsObject)
+    res.render('./vendor', hbsObject)
     })
+})
+
+// when you click on a specific customer, print that specific customer to the screen
+router.get('/api/vendor/:id', function(req, res) {
+    var id = req.params.id
+
+    db.Customer.findOne({
+        where: {
+            id: id
+        }
+        }).then(function(dbVendor) {
+        res.json(dbVendor)
+    })
+})
+
+router.get('/vendor/back', function(req, res) {
+    res.redirect('/vendor')
 })
 
 router.get('/reciever', function (req, res) {
@@ -24,42 +42,17 @@ router.get('/reciever', function (req, res) {
         var hbsObject = {
             customers: data
         }
-        //this renders data to the view
         res.render('./reciever', hbsObject)
     })
 })
 
-//figure out a way to update the transaction table
-//figure out how to associate that transaction with a specific customer
 router.post('/reciever', function (req, res) {
     console.log(req.body);
     res.json("hi");
     db.Transaction.create(req.body)
       .then(function(dbTransaction) {
           console.log(dbTransaction);
-        // res.json(dbTransaction);
       });
-
-   
-    //you are adding the id from the customer table to the transaction table so that you can associate them
-    //db.Transaction: add method customer id = however you get customer id
-    //sequelize code how to add information to database
-    //depending on authentication will determine how I will get access to user id
-    //if you are using passport req.user
-})
-
-
-
-router.get('/vendor/:id', function (req, res) {
-    var id = req.params.id
-
-   db.Customer.findOne({
-        where: {
-            id: id
-        }
-    }).then(function (dbCustomer) {
-        res.json(dbCustomer)
-    })
 })
 
 router.get('/receiver/:id', function (req, res) {
@@ -71,6 +64,25 @@ router.get('/receiver/:id', function (req, res) {
         }
     }).then(function (dbCustomer) {
         res.json(dbCustomer)
+        }).then(function(dbVendor) {
+        res.json(dbVendor)
+    })
+})
+
+router.get('/vendor/back', function(req, res) {
+    res.redirect('/vendor')
+})
+
+router.get('/admin/', function(req, res) {
+    db.Transaction.findAll({
+        include: [db.Customer]
+    })
+    .then(function(data) {
+        var hbsObject = {
+            transaction: data
+        }
+        res.render('./admin', hbsObject)
+        console.log(hbsObject);
     })
 })
 
