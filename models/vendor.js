@@ -1,8 +1,7 @@
-
 module.exports = function (sequelize, DataTypes) {
     var Vendor = sequelize.define("Vendor", {
         id: {
-            type: Sequelize.INTEGER,
+            type: DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true
           },

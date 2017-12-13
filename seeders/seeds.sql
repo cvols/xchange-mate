@@ -4,7 +4,7 @@ values ('chris', 'volonnino', 'cvols', 'password', 'chris.volonnino@gmail.com', 
 
 -- vendors seeds --
 insert into vendors (first_name, last_name, username, password, email, phone_number, street_address, city, state, zip_code, user_rating, transaction, createdAt, updatedAt)
-values ('james', 'castanien', 'jcast', 'password', 'jcastanient@gmail.com', '1234567891', '1 go to lane', 'morristown', 'nj', 12345, 1.3, false, current_timestamp, current_timestamp);
+values ('james', 'castanien', 'jcast', 'password', 'jcastanient@gmail.com', '1234567891', '1 go to lane', 'morristown', 'nj', 12345, '1.3', false, current_timestamp, current_timestamp);
 
 -- transactions seeds --
 insert into transactions (desired_currency, total_money, current_currency, transaction_location, exchange_rate, fees, total_charges, transaction, createdAt, updatedAt)

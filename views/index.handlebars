@@ -11,14 +11,14 @@
 				<h3 class="teal-text">Hello</h3>
 				<div class="row">
 					<div class="input-field col s12">
-						<input id="useremail" type="email" class="validate">
-						<label for="email">Email</label>
+						<input id="signInEmailC" type="email" class="validate">
+						<label for="signInEmailC">Email</label>
 					</div>
 				</div>
 				<div class="row">
 					<div class="input-field col s12">
-						<input id="userpassword" type="password" class="validate">
-						<label for="password">Password</label>
+						<input id="signInPassword" type="password" class="validate">
+						<label for="signInPassword">Password</label>
 					</div>
 				</div>
 				<br>
@@ -113,26 +113,26 @@
 	</div>
 </div>
 
-{{!-- <div style="height:700px; width:350px; margin-top:100px; margin-bottom: 100px; display:inline-block; float:right" class="container white z-depth-2">
+<div style="height:700px; width:350px; margin-top:100px; margin-bottom: 100px; display:inline-block; float:right" class="container white z-depth-2">
     <h1>Vendor Sign Up/In</h1>
 	<ul class="tabs teal">
 		<li class="tab col s3"><a class="white-text active" href="#vlogin">login</a></li>
 		<li class="tab col s3"><a class="white-text" href="#vregister">register</a></li>
 	</ul>
 	<div id="vlogin" class="col s12">
-		<form class="col s12" method="post" action="/vendLogin">
+		<form class="col s12" method="post" action="">
 			<div class="form-container">
 				<h3 class="teal-text">Hello</h3>
 				<div class="row">
 					<div class="input-field col s12">
-						<input id="email" type="email" class="validate">
-						<label for="email">Email</label>
+						<input id="signInEmailV" type="email" class="validate">
+						<label for="signInEmailV">Email</label>
 					</div>
 				</div>
 				<div class="row">
 					<div class="input-field col s12">
-						<input id="password" type="password" class="validate">
-						<label for="password">Password</label>
+						<input id="signInPasswordV" type="password" class="validate">
+						<label for="signInPasswordV">Password</label>
 					</div>
 				</div>
 				<br>
@@ -146,23 +146,23 @@
 		</form>
 	</div>
 	<div id="vregister" class="col s12">
-		<form class="col s12" method="post" action="/vendRegister">
+		<form class="col s12" method="POST" action="/api/newVendor">
 			<div class="form-container">
 				<h3 class="teal-text">Welcome</h3>
 				<div class="row">
 					<div class="input-field col s6">
-						<input id="last_name" type="text" class="validate">
-						<label for="last_name">First Name</label>
+						<input id="first_nameV" type="text" class="validate">
+						<label for="first_nameV">First Name</label>
 					</div>
 					<div class="input-field col s6">
-						<input id="last_name" type="text" class="validate">
-						<label for="last_name">Last Name</label>
+						<input id="last_nameV" type="text" class="validate">
+						<label for="last_nameV">Last Name</label>
 					</div>
 				</div>
 				<div class="row">
 					<div class="input-field col s12">
-						<input id="email" type="email" class="validate">
-						<label for="email">Email</label>
+						<input id="emailV" type="email" class="validate">
+						<label for="emailV">Email</label>
 					</div>
 				</div>
 				<div class="row">
@@ -173,8 +173,8 @@
 				</div>
 				<div class="row">
 					<div class="input-field col s12">
-						<input id="password" type="password" class="validate">
-						<label for="password">Password</label>
+						<input id="passwordV" type="password" class="validate">
+						<label for="passwordV">Password</label>
 					</div>
 				</div>
 				<div class="row">
@@ -183,10 +183,46 @@
 						<label for="password-confirm">Password Confirmation</label>
 					</div>
 				</div>
+				<div class="row">
+					<div class="input-field col s12">
+						<input id="user_nameV" type="text" class="validate">
+						<label for="user_nameV">Username</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="input-field col s12">
+						<input id="phone_numberV" type="text" class="validate">
+						<label for="phone_numberV">Phone</label>
+					</div>
+				</div>				
+				<div class="row">
+					<div class="input-field col s12">
+						<input id="addressV" type="text" class="validate">
+						<label for="addressV">Street Address</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="input-field col s12">
+						<input id="cityV" type="text" class="validate">
+						<label for="cityV">City</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="input-field col s12">
+						<input id="stateV" type="text" class="validate">
+						<label for="stateV">State</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="input-field col s12">
+						<input id="zip_codeV" type="number" class="validate">
+						<label for="zip_codeV">Zip Code</label>
+					</div>
+				</div>
 				<center>
-					<button class="btn waves-effect waves-light teal" type="submit" name="action">Submit</button>
+					<button class="btn waves-effect waves-light teal" type="submit" name="action" id="addVendor">Submit</button>
 				</center>
 			</div>
 		</form>
 	</div>
-</div> --}}
+</div>

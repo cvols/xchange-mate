@@ -58,6 +58,25 @@ router.post('/api/newCustomer', function (req, res) {
     })
 })
 
+router.post('/api/newVendor', function (req, res) {
+    console.log("hello");
+    console.log(req.body.first_name);
+    db.Vendor.create({
+        first_name: req.body.first_name,
+        last_name: req.body.last_name,
+        username: req.body.username,
+        password: req.body.password,
+        email: req.body.email,
+        phone_number: req.body.phone_number,
+        street_address: req.body.street_address,
+        city: req.body.city,
+        state: req.body.state,
+        zip_code: req.body.zip_code
+    }).then(function (xchange_mate) {
+        res.json(xchange_mate)
+    })
+})
+
 
 
 
