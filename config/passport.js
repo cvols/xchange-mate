@@ -1,133 +1,49 @@
-var bCrypt = require('bcrypt-nodejs');
+var passport = require("passport");
+var LocalStrategy = require("passport-local").Strategy;
 
-  module.exports = function(passport,customer){
+var db = require("../models");
 
-  var Customer = customer;
-  var LocalStrategy = require('passport-local').Strategy;
-
-
-  passport.serializeUser(function(customer, done) {
-          done(null, customer.id);
-      });
-
-
-  // used to deserialize the user
-  passport.deserializeUser(function(id, done) {
-      Customer.findById(id).then(function(customer) {
-        if(customer){
-          done(null, customer.get());
-        }
-        else{
-          done(customer.errors,null);
-        }
-      });
-
-  });
-
-
-  passport.use('local-signup', new LocalStrategy(
-
-    {           
-      usernameField : 'email',
-      passwordField : 'password',
-      passReqToCallback : true // allows us to pass back the entire request to the callback
-    },
-
-    function(req, email, password, done){
-       
-
-      var generateHash = function(password) {
-      return bCrypt.hashSync(password, bCrypt.genSaltSync(8), null);
-      };
-
-       Customer.findOne({where: {email:email}}).then(function(customer){
-
-      if(customer)
-      {
-        return done(null, false, {message : 'That email is already taken'} );
+// Telling passport we want to use a Local Strategy. In other words, we want login with a username/email and password
+passport.use(new LocalStrategy(
+  // Our user will sign in using an email, rather than a "username"
+  {
+    usernameField: "email"
+  },
+  function(email, password, done) {
+    // When a user tries to sign in this code runs
+    db.User.findOne({
+      where: {
+        email: email
       }
-
-      else
-      {
-        var userPassword = generateHash(password);
-        var data =
-        { email:email,
-        password:userPassword,
-        firstname: req.body.firstname,
-        lastname: req.body.lastname
-        };
-
-
-        Customer.create(data).then(function(newCustomer,created){
-          if(!newCustomer){
-            return done(null,false);
-          }
-
-          if(newCustomer){
-            return done(null,newCustomer);
-            
-          }
-
-
+    }).then(function(dbUser) {
+      // If there's no user with the given email
+      if (!dbUser) {
+        return done(null, false, {
+          message: "Incorrect email."
         });
       }
-
-
-    }); 
-
-
-
-  }
-
-
-
-  ));
-    
-  //LOCAL SIGNIN
-  passport.use('local-signin', new LocalStrategy(
-    
-  {
-
-  // by default, local strategy uses username and password, we will override with email
-  usernameField : 'email',
-  passwordField : 'password',
-  passReqToCallback : true // allows us to pass back the entire request to the callback
-  },
-
-  function(req, email, password, done) {
-
-    var Customer = customer;
-
-    var isValidPassword = function(userpass,password){
-      return bCrypt.compareSync(password, userpass);
-    }
-
-    Customer.findOne({ where : { email: email}}).then(function (user) {
-
-      if (!customer) {
-        return done(null, false, { message: 'Email does not exist' });
+      // If there is a user with the given email, but the password the user gives us is incorrect
+      else if (!dbUser.validPassword(password)) {
+        return done(null, false, {
+          message: "Incorrect password."
+        });
       }
-
-      if (!isValidPassword(user.password,password)) {
-
-        return done(null, false, { message: 'Incorrect password.' });
-
-      }
-
-      var customerinfo = customer.get();
-
-      return done(null,customerinfo);
-
-    }).catch(function(err){
-
-      console.log("Error:",err);
-
-      return done(null, false, { message: 'Something went wrong with your Signin' });
-
-
+      // If none of the above, return the user
+      return done(null, dbUser);
     });
-
   }
-  ));
+));
 
-  }
+// In order to help keep authentication state across HTTP requests,
+// Sequelize needs to serialize and deserialize the user
+// Just consider this part boilerplate needed to make it all work
+passport.serializeUser(function(user, cb) {
+  cb(null, user);
+});
+
+passport.deserializeUser(function(obj, cb) {
+  cb(null, obj);
+});
+
+// Exporting our configured passport
+module.exports = passport;

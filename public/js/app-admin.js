@@ -27,7 +27,7 @@ var transactionContainer = $(".transaction-container")
 
 var transactions = [];
 
-getTransactions();
+// getTransactions();
 
 function initializeRows(){
     transactionContainer.empty();
