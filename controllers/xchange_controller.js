@@ -124,14 +124,15 @@ router.get('/vendor/back', function(req, res) {
 
 router.get('/admin/', function(req, res) {
     db.Transaction.findAll({
-        include: [db.Customer]
+       // include: [{model: db.Customer}]
+        include: [{model: db.Customer}, {model: db.Vendor}]
+
     })
     .then(function(data) {
         var hbsObject = {
             transaction: data
         }
         res.render('./admin', hbsObject)
-        console.log(hbsObject);
     })
 })
 
