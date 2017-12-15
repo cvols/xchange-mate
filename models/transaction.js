@@ -49,11 +49,6 @@ module.exports = function (sequelize, DataTypes) {
                 allowNull: false
             }
         })
-        Transaction.belongsTo(models.Vendor, {
-            foreignKey: {
-                allowNull: false
-            }
-        })
     }
 
     return Transaction
