@@ -88,6 +88,12 @@ module.exports = function (sequelize, DataTypes) {
         }
     })
 
+    Vendor.associate = function (models) {
+        Vendor.hasMany(models.Transaction, {
+            onDelete: "cascade"
+        })
+    }
+
     return Vendor
 }
 

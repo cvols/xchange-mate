@@ -1,5 +1,7 @@
 $(document).ready(function() {
 
+// ATTEMPT ONE
+
 // $.ajax("/admin" {
 //     type:'GET'
 // }).then(function(data) {
@@ -23,43 +25,54 @@ $(document).ready(function() {
 
 
 
-var transactionContainer = $(".transaction-container")
-
-var transactions = [];
-
-getTransactions();
-
-function initializeRows(){
-    transactionContainer.empty();
-    var rowsToAdd = [];
-    for (var i=0; i < transactions.length; i++) {
-        rowsToAdd.push(createNewRow(transactions[i]));
-    }
-    transactionContainer.prepend(rowsToAdd)
-}
-
-function getTransactions(){
-    $.get("/admin/", function(data){
-        transactions = data;
-        console.log(transactions);
-        initializeRows();
-    });
-}
-
-function createNewRow(transactions) {
-    var newTr = $("<tr>");
-    newTr.data("Transaction", transactions);
-    newTr.append("<td>" + transactions.Customers.first_name + "</td>");
-    newTr.append("<td>" + transactions.Customers.last_name + "</td>");
-    newTr.append("<td>" + transactions.createdAt + "</td>");
-    newTr.append("<td>" + transactions.desired_currency + "</td>");
-    newTr.append("<td>" + transactions.total_money + "</td>");
-    return newTr;
-}
 
 
 
 
+
+
+
+// ATTEMPT TWO
+
+// var transactionContainer = $(".transaction-container")
+
+// var transactions = [];
+
+// getTransactions();
+
+// function initializeRows(){
+//     transactionContainer.empty();
+//     var rowsToAdd = [];
+//     for (var i=0; i < transactions.length; i++) {
+//         rowsToAdd.push(createNewRow(transactions[i]));
+//     }
+//     transactionContainer.prepend(rowsToAdd)
+// }
+
+// function getTransactions(){
+//     $.get("/admin/", function(data){
+//         transactions = data;
+//         console.log(transactions);
+//         initializeRows();
+//     });
+// }
+
+// function createNewRow(transactions) {
+//     var newTr = $("<tr>");
+//     newTr.data("Transaction", transactions);
+//     newTr.append("<td>" + transactions.Customers.first_name + "</td>");
+//     newTr.append("<td>" + transactions.Customers.last_name + "</td>");
+//     newTr.append("<td>" + transactions.createdAt + "</td>");
+//     newTr.append("<td>" + transactions.desired_currency + "</td>");
+//     newTr.append("<td>" + transactions.total_money + "</td>");
+//     return newTr;
+// }
+
+
+
+
+
+// ATTEMPT THREE
 
 //     var transactionList = $("tbody");
 //     var transactionContainer = $(".transaction-container");
