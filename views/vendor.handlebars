@@ -18,12 +18,12 @@
                         <th class="right-align">Cash Amount</th>
                     </tr>
                 </thead>
-                {{#each customers}}
+                {{#each transactions}}
                 <tbody>
                     <tr class="select-reciever" data-id="{{id}}">
-                        <td>{{first_name}}</td>
-                        <td></td>
-                        <td>{{user_rating}}</td>
+                        <td>{{User.first_name}}</td>
+                        <td>{{total_money}}</td>
+                        <td>{{User.user_rating}}</td>
                         <td></td>
                     </tr>
                 </tbody>

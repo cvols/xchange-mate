@@ -4,7 +4,7 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true
-          },
+        },
         desired_currency: {
             type: DataTypes.STRING,
             allowNull: false
@@ -26,7 +26,7 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: false
         },
         fees: {
-            type: DataTypes.DECIMAL(10,2),
+            type: DataTypes.DECIMAL(10, 2),
             allowNull: false
         },
         total_charges: {
@@ -38,8 +38,13 @@ module.exports = function (sequelize, DataTypes) {
         }
     })
 
-    Transaction.associate = function(models) {
-        Transaction.belongsTo(models.Customer, {
+    Transaction.associate = function (models) {
+        Transaction.belongsTo(models.User, {
+            foreignKey: {
+                allowNull: false
+            }
+        })
+        Transaction.belongsTo(models.Vendor, {
             foreignKey: {
                 allowNull: false
             }

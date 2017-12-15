@@ -1,1 +1,1 @@
-# xchange-mate
+# mate

@@ -3,41 +3,42 @@
 
 $(document).ready(function () {
 
+    $('#customer-login').hide()
 
-    $("#addCustomer").click(function () {
+    $("#addCustomer").on('click', function (event) {
         event.preventDefault();
-        console.log("hello")
-        // make a newCharacter obj
+
         var newCustomer = {
-            // name from name input
             first_name: $("#first_name").val().trim(),
-            // role from role input
             last_name: $("#last_name").val().trim(),
-            // age from age input
             email: $("#email").val().trim(),
-            // points from force-points input
             password: $("#password").val().trim(),
-
             username: $("#user_name").val().trim(),
-
             phone_number: $("#phone_number").val().trim(),
-
             street_address: $("#address").val().trim(),
-
             city: $("#city").val().trim(),
-
             state: $("#state").val().trim(),
-
-            zip_code: $("#zip_code").val().trim()
+            zip_code: $("#zip_code").val().trim(),
+            transaction: false
         }
-
-
-        $.ajax('/api/newCustomer', {
+//on the submit we want to redirect . does that code happen here in an if statement?
+        $.ajax('/newCustomer', {
             type: 'POST',
             data: newCustomer
         }).then(function () {
             console.log('added new Customer', newCustomer)
-            location.reload()
+            // $('.hide-index').hide()
+            //  $('#customer-login').show()
         })
-    });    
+    });
+
+    $('#sign-in').on('click', function(event) {
+        event.preventDefault()
+
+        $.ajax('/custLogin-btn/:password', {
+            type: 'GET'
+        }).then(function(data) {
+
+        })
+    })
 });

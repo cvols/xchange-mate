@@ -1,3 +1,10 @@
+/* index page */
+#background {
+    background-color: #334f8d;
+    height: 100vh;
+}
+
+/* vendor page */
 .collapsible {
     display: none;
 }
@@ -15,4 +22,6 @@
 .custom-icon {
     margin-right: 20px;
 }
+
+
 
