@@ -37,7 +37,7 @@ var exphbs = require('express-handlebars')
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
 
-// routes
+// routes using app
 require('./controllers/xchange_controller.js')(app)
 
 //syncing our sequelize models and then starting the express app
