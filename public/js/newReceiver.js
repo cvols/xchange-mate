@@ -3,9 +3,8 @@
 
 $(document).ready(function () {
 
-    $('#customer-login').hide()
 
-    $("#addCustomer").on('click', function (event) {
+    $("#addCustomer").click(function () {
         event.preventDefault();
 
         var newCustomer = {
@@ -18,29 +17,15 @@ $(document).ready(function () {
             street_address: $("#address").val().trim(),
             city: $("#city").val().trim(),
             state: $("#state").val().trim(),
-            zip_code: $("#zip_code").val().trim(),
-            user_rating: null,
-            bank: $("#bank").val().trim(),
-            transaction: false
+            zip_code: $("#zip_code").val().trim()
         }
-//on the submit we want to redirect . does that code happen here in an if statement?
+
         $.ajax('/newCustomer', {
             type: 'POST',
             data: newCustomer
         }).then(function () {
             console.log('added new Customer', newCustomer)
-            // $('.hide-index').hide()
-            //  $('#customer-login').show()
-        })
-    });
-
-    $('#sign-in').on('click', function(event) {
-        event.preventDefault()
-
-        $.ajax('/custLogin-btn/:password', {
-            type: 'GET'
-        }).then(function(data) {
-
+            location.reload()
         })
     })
 });

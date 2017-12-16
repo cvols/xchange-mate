@@ -6,7 +6,7 @@ var passport = require('passport')
 var db = require('../models');
 var passport = require("../config/passport");
 var passportV = require("../config/vendorPassport")
-
+var math = require("../config/math")
 
 module.exports = function (app) {
     // redirect to landing page
@@ -34,10 +34,6 @@ module.exports = function (app) {
 
     app.get('/reciever', function (req, res) {
         res.render('reciever')
-    })
-
-    app.get('/vendor', function (req, res) {
-        res.render('vendor')
     })
 
     app.post('/newCustomer', function (req, res) {
@@ -93,11 +89,13 @@ module.exports = function (app) {
         db.Transaction.findAll({
             include: [{ model: db.User }, { model: db.Vendor }]
         })
+
             .then(function (data) {
                 var hbsObject = {
                     transaction: data
                 }
                 res.render('admin', hbsObject)
+                console.log(hbsObject)
             })
     })
 
@@ -107,7 +105,7 @@ module.exports = function (app) {
             include: [{ model: db.User }, { model: db.Vendor }]
         }).then(function (data) {
             var hbsObject = {
-                transactions: data
+                transaction: data
             }
             res.render('vendor', hbsObject)
         })
@@ -120,7 +118,8 @@ module.exports = function (app) {
         db.User.findOne({
             where: {
                 id: id
-            }
+            },
+            include: [{ model: db.Transaction }]
         }).then(function (dbVendor) {
             res.json(dbVendor)
         })
@@ -130,10 +129,24 @@ module.exports = function (app) {
         res.redirect('/vendor')
     })
 
+    app.put('/api/vendor/:id', function (req, res) {
+        var id = req.params.id
+
+        db.User.update({
+            transaction: true
+        }, {
+                where: {
+                    id: id
+                }
+            }).then(function (dbUser) {
+                res.json(dbUser)
+            })
+    })
+
     app.get('/reciever', function (req, res) {
         res.render('reciever')
     })
-    
+
     app.post('/reciever', function (req, res) {
         db.Transaction.create({
             desired_currency: req.body.desired_currency,
