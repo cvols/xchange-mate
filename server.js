@@ -1,6 +1,6 @@
 // dependencies
 var express = require('express')
-var passport = require("./config/passport");
+// var passport = require("./config/passport");
 var passportV = require("./config/vendorPassport");
 var flash = require('connect-flash')
 var session = require('express-session')
@@ -18,8 +18,11 @@ app.use(flash())
 
 // // Passport Init
 app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true }));
-app.use(passport.initialize())
-app.use(passport.session())
+// app.use(passport.initialize())
+// app.use(passport.session())
+app.use(passportV.initialize())
+app.use(passportV.session())
+
 
 // static directory
 //app.use(express.static('public'))

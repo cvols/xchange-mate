@@ -26,18 +26,18 @@ $(function () {
 
             formatPhoneNumber(s)
 
-            var x = []
+//             var x = []
 
-            for (var i = 0; i < data.Transactions.length; i++) {
+//             for (var i = 0; i < data.Transactions.length; i++) {
                 
-                x.push(data.Transactions[i].id)
-                if (data.Transactions[i].id == data.Transactions.id) {
-                    //console.log(data.id)
-                } else {
-                    //console.log('not a match')
-                }
-            }
-            console.log(x)
+//                 x.push(data.Transactions[i].id)
+//                 if (data.Transactions[i].id == data.Transactions.id) {
+//                     //console.log(data.id)
+//                 } else {
+//                     //console.log('not a match')
+//                 }
+//             }
+//             console.log(x)
 
             $('#name').html(data.first_name + ' ' + data.last_name)
             $('#phone_number').html(phoneNumber)
@@ -48,23 +48,29 @@ $(function () {
         })
     })
 
-    $('#click-div').on('click', function (e) {
-        e.preventDefault()
+//     $('#click-div').on('click', function (e) {
+//         e.preventDefault()
 
-        var id = $(this).data('id')
-        var nowDevoured = $(this).data('nowdevoured')
+//         var id = $(this).data('id')
+//         var nowDevoured = $(this).data('nowdevoured')
 
-        var transaction = {
-            transaction: true
-        }
+//         var transaction = {
+//             transaction: true
+//         }
 
-        $.ajax('/api/vendor/' + id, {
-            type: 'PUT',
-            data: transaction
-        }).then(function () {
-            console.log('changed transaction to', transaction)
-        })
-    })
+//         $.ajax('/api/vendor/' + id, {
+//             type: 'PUT',
+//             data: transaction
+//         }).then(function () {
+//             console.log('changed transaction to', transaction)
+
+//             $('#first_name').html(data.first_name)
+//             $('#last_name').html(data.last_name)
+//             $('#phone_number').html(data.phone_number)
+//             $('#email').html(data.email)
+//             $('#user_rating').html(data.total_money)
+//         })
+//     })
 
     $('#vendor-back-btn').on('click', function (e) {
         e.preventDefault()

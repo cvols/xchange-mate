@@ -27,5 +27,15 @@ $(document).ready(function () {
             console.log('added new Customer', newCustomer)
             location.reload()
         })
+    });
+
+    $('#sign-in').on('click', function(event) {
+        event.preventDefault()
+
+        $.ajax('/custLogin-btn/:password', {
+            type: 'GET'
+        }).then(function(data) {
+
+        })
     })
 });
