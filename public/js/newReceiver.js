@@ -19,6 +19,8 @@ $(document).ready(function () {
             city: $("#city").val().trim(),
             state: $("#state").val().trim(),
             zip_code: $("#zip_code").val().trim(),
+            user_rating: null,
+            bank: $("#bank").val().trim(),
             transaction: false
         }
 //on the submit we want to redirect . does that code happen here in an if statement?

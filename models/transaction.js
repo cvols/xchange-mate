@@ -10,8 +10,7 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: false
         },
         total_money: {
-            type: DataTypes.INTEGER,
-            allowNull: false
+            type: DataTypes.INTEGER
         },
         current_currency: {
             type: DataTypes.STRING,
@@ -22,19 +21,22 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: false
         },
         exchange_rate: {
-            type: DataTypes.INTEGER,
-            allowNull: false
+            type: DataTypes.DECIMAL(10, 5)
         },
         fees: {
-            type: DataTypes.DECIMAL(10, 2),
-            allowNull: false
+            type: DataTypes.DECIMAL(10, 2)
         },
         total_charges: {
             type: DataTypes.INTEGER,
             allowNull: false
         },
+        transaction_date: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
         transaction: {
-            type: DataTypes.BOOLEAN
+            type: DataTypes.BOOLEAN,
+            defaultValue: false
         }
     })
 

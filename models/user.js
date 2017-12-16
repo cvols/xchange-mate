@@ -59,6 +59,9 @@ module.exports = function (sequelize, DataTypes) {
     user_rating: {
       type: DataTypes.STRING
     },
+    bank: {
+      type: DataTypes.DECIMAL(10, 2)
+    },
     transaction: {
       type: DataTypes.BOOLEAN,
       defaultValue: false
