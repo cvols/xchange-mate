@@ -31,6 +31,7 @@ $(document).ready(function () {
             console.log('added new Customer', newCustomer)
             // $('.hide-index').hide()
             //  $('#customer-login').show()
+            location.reload()
         })
     });
 

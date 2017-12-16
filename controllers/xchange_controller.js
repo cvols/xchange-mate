@@ -1,6 +1,4 @@
 // dependencies
-var express = require('express');
-var passport = require('passport')
 
 // import models
 var db = require('../models');
@@ -18,25 +16,30 @@ module.exports = function (app) {
         res.render('./index');
     })
 
-    app.post('/custLogin',
-        passport.authenticate('local', {
-            successRedirect: '/reciever',
-            failureFlash: true
-        })
-    );
+    app.post("/custLogin", passport.authenticate("local"), function (req, res) {
+        // Since we're doing a POST with javascript, we can't actually redirect that post into a GET request
+        // So we're sending the user back the route to the members page because the redirect will happen on the front end
+        // They won't get this or even be able to access this page if they aren't authed
+        console.log("success")
+        res.redirect("/reciever");
+    });
 
-    app.post('/vendLogin',
-        passportV.authenticate('local', {
-            successRedirect: '/vendor',
-            failureFlash: true
-        })
-    );
+    app.post("/vendLogin", passportV.authenticate("local"), function (req, res) {
+        // Since we're doing a POST with javascript, we can't actually redirect that post into a GET request
+        // So we're sending the user back the route to the members page because the redirect will happen on the front end
+        // They won't get this or even be able to access this page if they aren't authed
+        console.log("success")
+        res.redirect("/vendor")
+    });
 
     app.get('/reciever', function (req, res) {
+        console.log("here")
         res.render('reciever')
     })
 
     app.get('/vendor', function (req, res) {
+        console.log("here")
+        
         res.render('vendor')
     })
 
@@ -89,66 +92,68 @@ module.exports = function (app) {
         });
     });
 
-    app.get('/admin/', function (req, res) {
-        db.Transaction.findAll({
-            include: [{ model: db.User }, { model: db.Vendor }]
-        })
-            .then(function (data) {
-                var hbsObject = {
-                    transaction: data
-                }
-                res.render('admin', hbsObject)
-            })
-    })
-
+    // app.get('/admin/', function (req, res) {
+    //     db.Transaction.findAll({
+    //         include: [{ model: db.User }, { model: db.Vendor }]
+    //     })
+    //         .then(function (data) {
+    //             var hbsObject = {
+    //                 transaction: data
+    //             }
+    //             res.render('admin', hbsObject)
+    //         })
+    // })
+//working on this
     // gets all user from table and prints to screen
-    app.get('/vendor/', function (req, res) {
-        db.Transaction.findAll({
-            include: [{ model: db.User }, { model: db.Vendor }]
-        }).then(function (data) {
-            var hbsObject = {
-                transactions: data
-            }
-            res.render('vendor', hbsObject)
-        })
-    })
+    // app.get('/vendor/', function (req, res) {
+    //     console.log(req.vendor);
+        
+    //     db.Transaction.findAll({
+    //         include: [{ model: db.User }, { model: db.Vendor }]
+    //     }).then(function (data) {
+    //         var hbsObject = {
+    //             transactions: data
+    //         }
+    //         res.render('vendor', hbsObject)
+    //     })
+    // })
 
     // when you click on a specific user, print that specific user to the screen
-    app.get('/api/vendor/:id', function (req, res) {
-        var id = req.params.id
+    // app.get('/api/vendor/:id', function (req, res) {
+    //     var id = req.params.id
 
-        db.User.findOne({
-            where: {
-                id: id
-            }
-        }).then(function (dbVendor) {
-            res.json(dbVendor)
-        })
-    })
+    //     db.User.findOne({
+    //         where: {
+    //             id: id
+    //         }
+    //     }).then(function (dbVendor) {
+    //         res.json(dbVendor)
+    //     })
+    // })
 
-    app.get('/vendor/back', function (req, res) {
-        res.redirect('/vendor')
-    })
+    // app.get('/vendor/back', function (req, res) {
+    //     res.redirect('/vendor')
+    // })
 
-    app.get('/reciever', function (req, res) {
-        res.render('reciever')
-    })
+    // app.get('/reciever', function (req, res) {
+    //     res.render('reciever')
+    // })
     
-    app.post('/reciever', function (req, res) {
-        db.Transaction.create({
-            desired_currency: req.body.desired_currency,
-            total_money: req.body.total_money,
-            current_currency: req.body.current_currency,
-            transaction_location: req.body.transaction_location,
-            exchange_rate: req.body.exchange_rate,
-            fees: req.body.fees,
-            total_charges: req.body.total_charges,
-            transaction_date: req.body.transaction_date,
-            UserId: 1,
-            VendorId: 1,
-            transaction: false
-        }).then(function (dbTransaction) {
-            res.json(dbTransaction)
-        })
-    })
+    // app.post('/reciever', function (req, res) {
+    //     db.Transaction.create({
+    //         desired_currency: req.body.desired_currency,
+    //         total_money: req.body.total_money,
+    //         current_currency: req.body.current_currency,
+    //         transaction_location: req.body.transaction_location,
+    //         exchange_rate: req.body.exchange_rate,
+    //         fees: req.body.fees,
+    //         total_charges: req.body.total_charges,
+    //         transaction_date: req.body.transaction_date,
+    //         UserId: 1,
+    //         VendorId: 1,
+    //         transaction: false
+    //     }).then(function (dbTransaction) {
+    //         res.json(dbTransaction)
+    //     })
+    // })
 }
