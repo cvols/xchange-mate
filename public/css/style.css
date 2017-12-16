@@ -6,7 +6,7 @@
 
 /* vendor page */
 .collapsible {
-    /*display: none;*/
+    display: none;
 }
 
 #vendor-back-btn {
@@ -21,6 +21,13 @@
 
 .custom-icon {
     margin-right: 20px;
+}
+
+a.click-div {
+    display: block;
+    height: 100%;
+    width: 100%;
+    text-decoration: none;
 }
 
 

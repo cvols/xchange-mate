@@ -10,13 +10,13 @@ passportV.use(new UserStrategy(
   {
     usernameField: "email"
   },
-  function(email, password, done) {
+  function (email, password, done) {
     // When a user tries to sign in this code runs
     db.Vendor.findOne({
       where: {
         email: email
       }
-    }).then(function(dbVendor) {
+    }).then(function (dbVendor) {
       // If there's no user with the given email
       if (!dbVendor) {
         return done(null, false, {
@@ -70,11 +70,11 @@ passportV.use(new VendorStrategy(
 // In order to help keep authentication state across HTTP requests,
 // Sequelize needs to serialize and deserialize the user
 // Just consider this part boilerplate needed to make it all work
-passportV.serializeUser(function(vendor, cb) {
+passportV.serializeUser(function (vendor, cb) {
   cb(null, vendor);
 });
 
-passportV.deserializeUser(function(obj, cb) {
+passportV.deserializeUser(function (obj, cb) {
   cb(null, obj);
 });
 

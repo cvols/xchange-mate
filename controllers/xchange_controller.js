@@ -2,9 +2,7 @@
 
 // import models
 var db = require('../models');
-// var passport = require("../config/passport");
 var passportV = require("../config/vendorPassport")
-
 
 module.exports = function (app) {
     // redirect to landing page
@@ -36,7 +34,7 @@ module.exports = function (app) {
         console.log("here")
         res.render('reciever')
     })
-
+  
     app.get('/vendor', function (req, res) {
         console.log("here")
         
@@ -92,68 +90,83 @@ module.exports = function (app) {
         });
     });
 
-    // app.get('/admin/', function (req, res) {
-    //     db.Transaction.findAll({
-    //         include: [{ model: db.User }, { model: db.Vendor }]
-    //     })
-    //         .then(function (data) {
-    //             var hbsObject = {
-    //                 transaction: data
-    //             }
-    //             res.render('admin', hbsObject)
-    //         })
-    // })
-//working on this
+    app.get('/admin/', function (req, res) {
+        db.Transaction.findAll({
+            include: [{ model: db.User }, { model: db.Vendor }]
+        })
+
+            .then(function (data) {
+                var hbsObject = {
+                    transaction: data
+                }
+                res.render('admin', hbsObject)
+                console.log(hbsObject)
+            })
+    })
+
     // gets all user from table and prints to screen
-    // app.get('/vendor/', function (req, res) {
-    //     console.log(req.vendor);
-        
-    //     db.Transaction.findAll({
-    //         include: [{ model: db.User }, { model: db.Vendor }]
-    //     }).then(function (data) {
-    //         var hbsObject = {
-    //             transactions: data
-    //         }
-    //         res.render('vendor', hbsObject)
-    //     })
-    // })
+    app.get('/vendor/', function (req, res) {
+        db.Transaction.findAll({
+            include: [{ model: db.User }, { model: db.Vendor }]
+        }).then(function (data) {
+            var hbsObject = {
+                transaction: data
+            }
+            res.render('vendor', hbsObject)
+        })
+    })
 
     // when you click on a specific user, print that specific user to the screen
-    // app.get('/api/vendor/:id', function (req, res) {
-    //     var id = req.params.id
+    app.get('/api/vendor/:id', function (req, res) {
+        var id = req.params.id
 
-    //     db.User.findOne({
-    //         where: {
-    //             id: id
-    //         }
-    //     }).then(function (dbVendor) {
-    //         res.json(dbVendor)
-    //     })
-    // })
+        db.User.findOne({
+            where: {
+                id: id
+            },
+            include: [{ model: db.Transaction }]
+        }).then(function (dbVendor) {
+            res.json(dbVendor)
+        })
+    })
 
-    // app.get('/vendor/back', function (req, res) {
-    //     res.redirect('/vendor')
-    // })
+    app.get('/vendor/back', function (req, res) {
+        res.redirect('/vendor')
+    })
 
-    // app.get('/reciever', function (req, res) {
-    //     res.render('reciever')
-    // })
-    
-    // app.post('/reciever', function (req, res) {
-    //     db.Transaction.create({
-    //         desired_currency: req.body.desired_currency,
-    //         total_money: req.body.total_money,
-    //         current_currency: req.body.current_currency,
-    //         transaction_location: req.body.transaction_location,
-    //         exchange_rate: req.body.exchange_rate,
-    //         fees: req.body.fees,
-    //         total_charges: req.body.total_charges,
-    //         transaction_date: req.body.transaction_date,
-    //         UserId: 1,
-    //         VendorId: 1,
-    //         transaction: false
-    //     }).then(function (dbTransaction) {
-    //         res.json(dbTransaction)
-    //     })
-    // })
+    app.put('/api/vendor/:id', function (req, res) {
+        var id = req.params.id
+
+        db.User.update({
+            transaction: true
+        }, {
+                where: {
+                    id: id
+                }
+            }).then(function (dbUser) {
+                res.json(dbUser)
+            })
+    })
+
+    app.get('/reciever', function (req, res) {
+        res.render('reciever')
+    })
+
+    app.post('/reciever', function (req, res) {
+        db.Transaction.create({
+            desired_currency: req.body.desired_currency,
+            total_money: req.body.total_money,
+            current_currency: req.body.current_currency,
+            transaction_location: req.body.transaction_location,
+            exchange_rate: req.body.exchange_rate,
+            fees: req.body.fees,
+            total_charges: req.body.total_charges,
+            transaction_date: req.body.transaction_date,
+            UserId: 1,
+            VendorId: 1,
+            transaction: false
+        }).then(function (dbTransaction) {
+            res.json(dbTransaction)
+        })
+    })
 }
