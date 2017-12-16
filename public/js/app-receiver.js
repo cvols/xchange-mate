@@ -2,9 +2,9 @@ $(document).ready(function () {
 
     $('select').material_select();
 
-    var currency = ['USD', 'EUR']
+    var currency = ['AUD', 'BGN', 'BRL', 'CAD', 'CHF', 'CNY', 'CZK', 'DKK', 'EUR', 'GBP', 'HKD', 'HRK', 'HUF', 'IDR', 'ILS', 'INR', 'JPY', 'KRW', 'MXN', 'MYR', 'NOK', 'NZD', 'PHP', 'PLN', 'RON', 'RUB', 'SEK', 'SGD', 'THB', 'TRY', 'USD', 'ZAR' ]
 
-    var airports = ['Hartsfield-Jackson Atlanta International Airport', 'O\'Hare International']
+    var airports = ['Hartsfield-Jackson Atlanta International Airport', 'O\'Hare International', 'Los Angeles International Airport', 'Dallas/Fort Worth International Airport', 'John F. Kennedy International Airport', 'Denver International Airport', 'San Francisco International Airport', 'McCarran International Airport', 'Phoenix Sky Harbor International Airport', 'George Bush Intercontinental Airport', 'Charlotte/Douglas International Airport', 'Miami International Airport', 'Orlando International Airport', 'Newark Liberty International Airport', 'Seattle-Tacoma International Airport', 'Minneapolis-St. Paul International Airport', 'Detroit Metropolitan Wayne County Airport', 'Philadelphia International Airport', 'Logan International Airport', 'LaGuardia Airport', 'Fort Lauderdale/Hollywood International Airport', 'Baltimore-Washington International Thurgood Marshall Airport', 'Washington Dulles International Airport', 'Salt Lake City International Airport', 'Midway International Airport']
 
     $("#myButton").click(function () {
         // add new value

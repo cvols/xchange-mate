@@ -34,12 +34,6 @@ module.exports = function (app) {
         console.log("here")
         res.render('reciever')
     })
-  
-    app.get('/vendor', function (req, res) {
-        console.log("here")
-        
-        res.render('vendor')
-    })
 
     app.post('/newCustomer', function (req, res) {
         db.User.create({
@@ -146,10 +140,6 @@ module.exports = function (app) {
             }).then(function (dbUser) {
                 res.json(dbUser)
             })
-    })
-
-    app.get('/reciever', function (req, res) {
-        res.render('reciever')
     })
 
     app.post('/reciever', function (req, res) {
