@@ -52,6 +52,8 @@ module.exports = function (app) {
             city: req.body.city,
             state: req.body.state,
             zip_code: req.body.zip_code,
+            user_rating: null,
+            bank: req.body.bank,
             transaction: req.body.transaction
         }).then(function () {
             res.redirect(307, '/custLogin');
@@ -75,6 +77,8 @@ module.exports = function (app) {
             city: req.body.city,
             state: req.body.state,
             zip_code: req.body.zip_code,
+            user_rating: null,
+            bank: req.body.bank,
             transaction: req.body.transaction
         }).then(function () {
             res.redirect(307, '/vendLogin');
@@ -129,14 +133,7 @@ module.exports = function (app) {
     app.get('/reciever', function (req, res) {
         res.render('reciever')
     })
-
-    // app.post('/reciever', function (req, res) {
-    //     db.Transaction.create(req.body)
-    //         .then(function (dbTransaction) {
-    //             console.log(dbTransaction);
-    //         })
-    // })
-
+    
     app.post('/reciever', function (req, res) {
         db.Transaction.create({
             desired_currency: req.body.desired_currency,
@@ -146,7 +143,10 @@ module.exports = function (app) {
             exchange_rate: req.body.exchange_rate,
             fees: req.body.fees,
             total_charges: req.body.total_charges,
-            transaction: req.body.transaction
+            transaction_date: req.body.transaction_date,
+            UserId: 1,
+            VendorId: 1,
+            transaction: false
         }).then(function (dbTransaction) {
             res.json(dbTransaction)
         })
