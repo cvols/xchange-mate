@@ -4,6 +4,13 @@
     height: 100vh;
 }
 
+.custom {
+    position: fixed;
+    top: 10px;
+    left: 25%;
+    font-size: 700%;
+}
+
 /* vendor page */
 .collapsible {
     display: none;
