@@ -28,7 +28,7 @@ $(document).ready(function () {
         }  
 
 
-        $.ajax('/api/newVendor', {
+        $.ajax('/newVendor', {
             type: 'POST',
             data: newVendor
         }).then(function () {

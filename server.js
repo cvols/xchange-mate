@@ -20,6 +20,9 @@ app.use(flash())
 app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true }));
 app.use(passport.initialize())
 app.use(passport.session())
+app.use(passportV.initialize())
+app.use(passportV.session())
+
 
 // static directory
 //app.use(express.static('public'))
