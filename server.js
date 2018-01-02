@@ -45,7 +45,7 @@ require('./controllers/xchange_controller.js')(app)
 
 //syncing our sequelize models and then starting the express app
 db.sequelize.sync({}).then(function () {
-    app.listen(port, function () {
+    app.listen(process.env.PORT || port, function () {
         console.log('app listening on port: ' + port)
     })
 })
