@@ -1,6 +1,6 @@
 {
   "development": {
-    "username": "chris",
+    "username": "james3",
     "password": "password", 
     "database": "xchange_mate", 
     "host": "127.0.0.1",
@@ -14,6 +14,7 @@
     "dialect": "mysql"
   },
   "production": {
+    "use_env_variable": "JawsDB_URL",
     "dialect": "mysql"
   }
 }
