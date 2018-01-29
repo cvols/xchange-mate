@@ -8,13 +8,16 @@
   },
   "test": {
     "username": "root",
-    "password": "password",
-    "database": "database_test",
+    "password": null,
+    "database": "xchange_mate",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "production": {
-    "use_env_variable": "JawsDB-URL",
+    "username": "kakkq0zusk1yry8q",
+    "password": "ys4gl5ivq72wvkrc",
+    "database": "zkpf2aeir1h04bzg",
+    "host": "fugfonv8odxxolj8.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
     "dialect": "mysql"
   }
 }
