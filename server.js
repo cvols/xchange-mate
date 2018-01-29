@@ -8,7 +8,7 @@ var bodyParser = require('body-parser')
 
 // setting up the express app
 var app = express()
-var port = process.env.PORT || 3030
+var connection = require('./config/connection.js')
 
 // requiring models folder for syncing
 var db = require('./models')
@@ -44,20 +44,7 @@ app.set('view engine', 'handlebars')
 require('./controllers/xchange_controller.js')(app)
 
 //syncing our sequelize models and then starting the express app
+var port = process.env.PORT || 3030
 db.sequelize.sync({}).then(function () {
-    let server = app.listen(port, function () {
-        db.User.findAll({}).then(function (users) {
-            if (users.length === 0) {
-                db.User.create({
-                    email: "xchange@xchange.com",
-                    username: "xchange",
-                    password: "xchange"
-                })
-                    .then(function (xchange) {
-                    })
-            }
-        })
-    })
     console.log("App listening on Port " + port)
-
 })
