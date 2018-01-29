@@ -44,7 +44,7 @@ app.set('view engine', 'handlebars')
 require('./controllers/xchange_controller.js')(app)
 
 //syncing our sequelize models and then starting the express app
-var port = process.env.PORT || 3030
+var port = process.env.PORT || 3000
 db.sequelize.sync({}).then(function () {
     console.log("App listening on Port " + port)
 })
