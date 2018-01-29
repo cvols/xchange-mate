@@ -4,14 +4,13 @@
   "description": "help exchange different currencies from one user to another",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
-  },
+    "test": "echo \"Error: no test specified\" && exit 1"
+   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/cvols/xchange-mate.git"
   },
-  "author": "",
+  "author": "chris volonnino",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/cvols/xchange-mate/issues"
